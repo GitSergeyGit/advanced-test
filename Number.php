@@ -3,12 +3,17 @@
 class Number
 {
     private $a;
-    private $b;
+    private $email;
 
-    public function __construct($a, $b)
-    {
+    public function __construct(
+        $a,
+        Email $email
+    ) {
         $this->setA($a);
-        $this->setB($b);
+        $this->email = $email;
+//        $this->email->getEmail();
+//        $email->getEmail();
+//        $this->setB($b);
     }
 
     private function validate($value)
