@@ -9,7 +9,6 @@ class UserController
 
     public function actionIndex()
     {
-        $user = new User();
-        $user->actionIndex();
+        echo "UserController <br>";
     }
 }

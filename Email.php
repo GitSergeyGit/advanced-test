@@ -26,7 +26,19 @@ class Email
     }
 }
 
-$email2 = new Email('awdadawd@gmail.com');
-$email1 = new Email('awdadawd');
+class EmailHillel extends Email
+{
+    public function __construct($email)
+    {
+        parent::__construct($email);
+        if (strpos($email, '@hillel.com') === false) {
+            throw new InvalidArgumentException('Невалідний email Hillel');
+        }
+    }
+}
 
-var_dump($email1->getEmail(), $email2->getEmail());
+$email2 = new EmailHillel('awdadawd@gmail.com');
+//$email2 = new EmailHillel('awdadawd@hillel.com');
+//$email1 = new Email('awdadawd');
+
+var_dump($email2->getEmail());
