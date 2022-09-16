@@ -4,9 +4,14 @@ namespace Hillel\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Order extends Model
 {
-    public function orders()
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function products()
     {
         return $this->belongsToMany(Product::class, 'product2order')->withTimestamps();
     }

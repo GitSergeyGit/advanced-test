@@ -1,12 +1,14 @@
 <?php
 
-namespace Http\Models;
+namespace Hillel\Models;
 
-class User
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
 {
+    public $timestamps = false;
 
-    public function actionIndex()
-    {
-        echo 'UserController actionIndex';
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 }
