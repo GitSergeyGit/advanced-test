@@ -3,11 +3,18 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../config/blade.php';
+require_once __DIR__ . '/../config/router.php';
 
-$title = 'Home page';
-$text = 'Simple Text';
-$orders = \Hillel\Models\Order::all();
+/**
+ * @var Illuminate\Routing\Router $router
+ */
+/**
+ * @var Illuminate\Http\Request $request
+ */
+$responce = $router->dispatch($request);
+echo $responce->getContent();
 
-/** @var $blade */
-echo $blade->make('pages/index', compact('title', 'text', 'orders'))->render();
-
+//require_once __DIR__ . '/../vendor/autoload.php';
+//
+//$app = new \Hillel\Base\Application();
+//echo $app->run();
