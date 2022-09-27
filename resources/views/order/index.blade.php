@@ -1,6 +1,14 @@
 @extends('layout')
 
 @section('content')
+    @isset($_SESSION['success'])
+        <div class="alert alert-success" role="alert">
+            {{ $_SESSION['success'] }}
+        </div>
+    @endisset
+    @php
+        unset($_SESSION['success']);
+    @endphp
     <a href="/order/create" class="btn btn-primary">Add Order</a>
     <table class="table">
         <thead>
@@ -8,6 +16,8 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
+            <th scope="col">User</th>
+            <th scope="col">Product</th>
             <th scope="col">Created At</th>
             <th scope="col">Updated At</th>
             <th scope="col">Actions</th>
@@ -19,6 +29,8 @@
                 <td>{{ $order->id }}</td>
                 <td>{{ $order->title }}</td>
                 <td>{{ $order->price }}</td>
+                <td>{{ $order->user->username }}</td>
+                <td>{{ $order->products->pluck('name')->join(', ') }}</td>
                 <td>{{ $order->created_at }}</td>
                 <td>{{ $order->udpdated_at }}</td>
                 <td>

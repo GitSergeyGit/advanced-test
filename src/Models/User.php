@@ -8,7 +8,8 @@ class User extends Model
 {
     public $timestamps = false;
 
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany(Order::class);
     }
 }
