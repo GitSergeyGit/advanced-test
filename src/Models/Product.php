@@ -8,6 +8,6 @@ class Product extends Model
 {
     public function orders()
     {
-        return $this->belongsToMany(Product::class, 'product2order')->withTimestamps();
+        return $this->belongsToMany(Order::class, 'product2order')->withTimestamps();
     }
 }

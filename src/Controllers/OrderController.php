@@ -16,6 +16,20 @@ class OrderController
         return view('order/index', compact('orders'));
     }
 
+    public function trash()
+    {
+        $orders = Order::onlyTrashed()->get();
+        return view('order/trash', compact('orders'));
+    }
+
+    public function restore($id)
+    {
+        Order::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return new RedirectResponse('/order');
+    }
+
     public function show($id)
     {
         $order = Order::find($id);
@@ -105,8 +119,15 @@ class OrderController
     public function destroy($id)
     {
         $order = Order::find($id);
-        $order->products()->detach();
         $order->delete();
+        return new RedirectResponse('/order');
+    }
+
+    public function forceDelete($id)
+    {
+        $order = Order::find($id);
+        $order->products()->detach();
+        $order->forceDelete();
         return new RedirectResponse('/order');
     }
 }

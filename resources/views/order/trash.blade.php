@@ -1,16 +1,8 @@
 @extends('layout')
 
 @section('content')
-    @isset($_SESSION['success'])
-        <div class="alert alert-success" role="alert">
-            {{ $_SESSION['success'] }}
-        </div>
-    @endisset
-    @php
-        unset($_SESSION['success']);
-    @endphp
-    <a href="/order/create" class="btn btn-primary">Add Order</a>
-    <a href="/order/trash" class="btn btn-info">Trash</a>
+
+    <a href="/order/" class="btn btn-info">List</a>
     <table class="table">
         <thead>
         <tr>
@@ -35,10 +27,7 @@
                 <td>{{ $order->created_at }}</td>
                 <td>{{ $order->udpdated_at }}</td>
                 <td>
-                    <a href="/order/{{ $order->id }}/edit">Update</a>
-                    <a href="/order/{{ $order->id }}/delete">Delete</a>
-                    <a href="/order/{{ $order->id }}/show">Show</a>
-                    <a href="/order/{{ $order->id }}/force-delete">Force Delete</a>
+                    <a href="/order/{{ $order->id }}/restore">Restore</a>
                 </td>
             </tr>
         @empty
