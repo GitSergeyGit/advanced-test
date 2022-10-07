@@ -40,7 +40,8 @@ $router->get('/order/{id}/restore', [OrderController::class, 'restore']);
 $router->get('/order/{id}/force-delete', [OrderController::class, 'forceDelete']);
 
 $router->get('/product', [ProductController::class, 'index']);
-$router->get('/product/{id}/show', [ProductController::class, 'show']);
+//$router->get('/product/{id}/show', [ProductController::class, 'show']);
+$router->get('/product/{id}', [ProductController::class, 'show'])->whereNumber('id');
 $router->get('/product/create', [ProductController::class, 'create']);
 $router->post('/product/store', [ProductController::class, 'store']);
 $router->get('/product/{id}/edit', [ProductController::class, 'edit']);

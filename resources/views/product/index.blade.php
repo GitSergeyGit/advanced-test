@@ -26,13 +26,13 @@
             <tr>
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->orders->pluck('title')->join(', ') }}</td>
+                <td>{!! $product->orders->pluck('title')->join('<br>') !!}</td>
                 <td>{{ $product->created_at }}</td>
                 <td>{{ $product->udpdated_at }}</td>
                 <td>
                     <a href="/product/{{ $product->id }}/edit">Update</a>
                     <a href="/product/{{ $product->id }}/delete">Delete</a>
-                    <a href="/product/{{ $product->id }}/show">Show</a>
+                    <a href="/product/{{ $product->id }}">Show</a>
                 </td>
             </tr>
         @empty
